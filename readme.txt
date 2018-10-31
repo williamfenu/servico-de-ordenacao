@@ -8,7 +8,7 @@ Modo de utilização:
 -Selecione onde a Lista ordenada será salva.
 
 Sobre o arquivo config.properties:
-Ao abrir o Serviço de Ordenação .jar pela primeira vez será gerado um arquivo config.properties no mesmo diretório do programa. Este arquivo deverá ser aberto com o bloco de notas e as configurações de ordenação deverão ser passadas através deste arquivo.
+Caso o Serviço de Ordenação .jar ao ser executado não localize o arquivo config.properties no mesmo diretório do programa ele criará um. Este arquivo deverá ser aberto com o bloco de notas e as configurações de ordenação deverão ser passadas através deste arquivo.
 
 É necessário seguir as seguintes regras para sucesso na ordenação da lista:
 
