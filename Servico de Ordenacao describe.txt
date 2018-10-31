@@ -1,0 +1,41 @@
+**************************************Serviço de Ordenação V1.0********************************************************
+
+O Serviço de Ordenação é um programa feito na linguagem Java que tem por objetivos ordenar uma lista de livros pré-criada no formato txt. O utilizador poderá selecionar um ou mais atributos entre título do livro, autor do livro e ano de edição, assim como a ordem entre ascendente e descendente através de um arquivo de configuração que é criado no diretório onde o programa é executado pela primeira vez.
+
+Atenção: É necessário ter o JRE instalado e atualizado no desktop.
+O programa foi feito utilizando as seguintes configurações:
+-Windows 10 Home 64-bits
+-Java SDK 1.8.0_191 64-bits
+-Eclipse versão SimRel(2018-09 (4.9.0))
+
+O programa utiliza as seguintes classes:
+-Classe Principal.java: Classe onde o programa é inicializado. Esta classe faz a chamada para inicializar a interface gráfica.
+	Método Main()(público,estático,sem retorno) - Inicia o programa
+
+-Classe Gui.java: Classe que cria a interface gráfica. A interface Gráfica é constituída de um botão para carregar a lista de livros em formato "txt" pré-criada e um botão para ordenar a lista carregada salvando a mesma em um lugar à escolha do utilizador.
+	Método iniciar()(público,sem retorno) - Constroi a Interfáce gráfica.
+
+-Classe livro.java: Classe responsável por criar o objeto livro e guardar seus atributos(nome,autor e ano).
+	Método getTitulo()(público,String) - retorna o valor da variável titulo.
+	Método setTitulo(String)(público,sem retorno) - atribui valor à variável titulo.
+	Método getAutor()(público,String) - retorna o valor da variável autor
+	Método setAutor(String)(público,sem retorno) - atribui valor à variável autor
+	Método getAno()(público,String) - retorna o valor da variável ano.
+	Método setAno(int)(público,sem retorno) - atribui valor à variável ano.
+	Método toString()(público,String) (Sobre-escrito) - Retorna o valor de String de um objeto.
+
+-Classe Ordenador.java: Classe que organiza a lista carregada no programa de acordo com os parametros passados no arquivo de configuração.
+	Método ordenaPorTitulo(List<Livro>,List<String>)(privada,List<Livro>) - ordena a lista recebida por título como parâmetro principal. Caso o próximo objeto tenha o mesmo título, é comparado com o próximo parâmetro.
+	Método ordenaPorAutor(List<Livro>,List<String>)(privada,List<Livro>) - ordena a lista recebida por autor como parâmetro principal. Caso o próximo objeto tenha o mesmo autor é comparado com o próximo parâmetro.
+	Método ordenaPorAno(List<Livro>,List<String>)(privada,List<Livro>) - ordena a lista recebida por ano como parâmetro principal. Caso o próximo objeto tenha o mesmo ano é comparado com o próximo parâmetro.
+	Método Ordenar(List<Livro>,List<String>)(público,List<Livro>) - consulta o arquivo de configuração e os demais métodos internos para ordenar a lista e retorna a lista ordenada.
+
+-Classe LeitorDeProperties.java: Classe que verifica se o arquivo de configuração está no diretório do programa e cria este caso necessário além de ler os parâmetros no arquivo de configuração.
+	Método lerProperties()(público,List<String>) - lê o arquivo config.properties e envia a lista com os parâmetros informados.
+	Método refazerProperties()(privado,sem retorno) - cria o arquivo config.properties no diretório utilizado pelo usuário.
+	Método verificaProperties()(público,sem retorno) - Verifica se o arquivo config.properties existe no diretório em que o programa inicializa. Caso não exista, envia a solicitação de criação para o método refazerProperties().
+
+-Classe ControladorLista.java: Classe que carrega a lista de livros e grava a lista ordenada no diretório escolhido pelo utilizador.
+	Método carregaLista(File)(pública,sem retorno) - carrega a lista de livros do TXT para a memória.
+	Método salvarListaOrdenada(File,List<Livro>)(público,sem retorno) - salva a lista ordenada no caminho escolhido pelo utilizador.
+	Método recuperaLista()(público,List<Livro>) - retorna a lista de livros que foi carregada pelo método carregaLista().
