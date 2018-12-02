@@ -33,6 +33,7 @@ public class Livro{
 	}
 	
 	public String toString() {
-		return "Título do Livro: "+this.titulo + "\r\nAutor: " + this.autor + "\r\nAno de edição: " + this.ano +"\r\n";
+		String quebraDeLinha = System.lineSeparator();
+		return "Título do Livro: "+this.titulo + quebraDeLinha + "Autor: " + this.autor + quebraDeLinha + "Ano de edição: " + this.ano + quebraDeLinha;
 	}
 }

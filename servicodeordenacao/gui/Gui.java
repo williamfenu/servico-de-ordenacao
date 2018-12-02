@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import br.com.williamcasa.servicodeordenacao.classes.auxiliares.ControladorLista;
-import br.com.williamcasa.servicodeordenacao.classes.auxiliares.LeitorDeProperties;
+import br.com.williamcasa.servicodeordenacao.classes.auxiliares.LeitorDeParametro;
 import br.com.williamcasa.servicodeordenacao.classes.principais.Livro;
 import br.com.williamcasa.servicodeordenacao.classes.principais.Ordenador;
 
@@ -65,8 +65,8 @@ public class Gui {
 				if(listaDeLivros == null) {
 					JOptionPane.showMessageDialog(null, "É necessário carregar a lista de livros");
 				}
-				Ordenador ordenador = new Ordenador(listaDeLivros,new LeitorDeProperties().lerProperties());
-				ArrayList<Livro> listaOrdenada = (ArrayList<Livro>) ordenador.Ordenar();
+				Ordenador ordenador = new Ordenador(listaDeLivros,new LeitorDeParametro().lerProperties());
+				ArrayList<Livro> listaOrdenada = (ArrayList<Livro>) ordenador.ordenar();
 				JFileChooser ordenar = new JFileChooser();
 				ordenar.setDialogTitle("Seleciona onde salvar a lista ordenada");
 				ordenar.setFileFilter(new FileNameExtensionFilter("Lista de livros (.txt)","txt"));
