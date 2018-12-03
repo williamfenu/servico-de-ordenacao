@@ -66,7 +66,7 @@ public class Gui {
 					JOptionPane.showMessageDialog(null, "É necessário carregar a lista de livros");
 				}
 				Ordenador ordenador = new Ordenador(listaDeLivros,new LeitorDeParametro().lerProperties());
-				ArrayList<Livro> listaOrdenada = (ArrayList<Livro>) ordenador.ordenar();
+				ArrayList<Livro> listaOrdenada = (ArrayList<Livro>) ordenador.ordenarLista();
 				JFileChooser ordenar = new JFileChooser();
 				ordenar.setDialogTitle("Seleciona onde salvar a lista ordenada");
 				ordenar.setFileFilter(new FileNameExtensionFilter("Lista de livros (.txt)","txt"));

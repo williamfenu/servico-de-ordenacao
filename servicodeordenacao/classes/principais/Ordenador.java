@@ -15,27 +15,19 @@ public class Ordenador {
 		this.parametrosASeguir = param;
 	}
 
-	public List<Livro> ordenar() {
+	public List<Livro> ordenarLista() {
 		TemplateDeComparacao comparavelInicial = parametrosASeguir.get(0).getComparavel();
 		comparavelInicial.setOrdenador(this);
 		Collections.sort(listaAOrdenar, comparavelInicial);
 		return listaAOrdenar;
 	}
 
-	public void aceitaComparador(TemplateDeComparacao comparador) {
-		if (comparador.getPosicaoAtualDeComparacao() < parametrosASeguir.size()) {
-
-			int proximaPosicao = comparador.getPosicaoAtualDeComparacao() + 1;
-			comparador.setProximo(parametrosASeguir.get(proximaPosicao).getComparavel());
-		}
-	}
-
 	public List<Livro> getListaAOrdenar() {
-		return listaAOrdenar;
+		return Collections.unmodifiableList(listaAOrdenar);
 	}
 
 	public List<Parametro> getParametrosASeguir() {
-		return parametrosASeguir;
+		return Collections.unmodifiableList(parametrosASeguir);
 	}
 
 	public Ordenador getOrdenador() {

@@ -37,7 +37,6 @@ public class LeitorDeParametro {
 				}
 				validado=true;
 				for (int i = 0; i < valores.length; i++) {
-					//parametrosDeOrdenacao.add(valores[i]=valores[i].toLowerCase());
 					String valorMaiusculo = valores[i].toUpperCase();
 					if(!valores[i].equals("titulo")&&!valores[i].equals("autor")&&!valores[i].equals("ano")) {
 						JOptionPane.showMessageDialog(null, "parametros de nome, autor ou ano inválidos no arquivo de configuração. "
@@ -45,7 +44,6 @@ public class LeitorDeParametro {
 						validado = false;
 						break;
 					}
-					//parametrosDeOrdenacao.add(ascOrDesc[i].toLowerCase());
 					String ascOrDescMaiusculo = ascOrDesc[i].toLowerCase();
 					if(!ascOrDesc[i].equals("ascendente")&&!ascOrDesc[i].equals("descendente")) {
 						JOptionPane.showMessageDialog(null, "parametros de ordenação ascendente ou "
