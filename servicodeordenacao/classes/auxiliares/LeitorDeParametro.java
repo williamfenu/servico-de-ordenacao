@@ -17,8 +17,8 @@ import br.com.williamcasa.servicodeordenacao.classes.principais.Criterio;
 import br.com.williamcasa.servicodeordenacao.classes.principais.Parametro;
 
 public class LeitorDeParametro {
-	private List<Parametro> parametrosDeOrdenacao = new ArrayList<Parametro>();
-	
+	private List<Parametro> parametrosDeOrdenacao = new ArrayList<>();
+
 	public List<Parametro> lerProperties() {
 		try {
 			Properties prop = new Properties();
@@ -27,35 +27,40 @@ public class LeitorDeParametro {
 			String atributos = prop.getProperty("atributos");
 			String ordem = prop.getProperty("ordem");
 			is.close();
-			boolean validado=false;
+			boolean validado = false;
 			if (!atributos.equals("") || !ordem.equals("")) {
 				String[] valores = atributos.split("/");
 				String[] ascOrDesc = ordem.split("/");
-				if(valores.length!=ascOrDesc.length) {
+				if (valores.length != ascOrDesc.length) {
 					JOptionPane.showMessageDialog(null, "É necessário um ordenamento para cada atributo");
 					return null;
 				}
-				validado=true;
+				validado = true;
 				for (int i = 0; i < valores.length; i++) {
-					String valorMaiusculo = valores[i].toUpperCase();
-					if(!valores[i].equals("titulo")&&!valores[i].equals("autor")&&!valores[i].equals("ano")) {
-						JOptionPane.showMessageDialog(null, "parametros de nome, autor ou ano inválidos no arquivo de configuração. "
-								+ "Separe os atributos por '/'sem espaços");
+					String parametroFormatado = valores[i].toUpperCase();
+
+					if (!parametroFormatado.equals("TITULO") && parametroFormatado.equals("AUTOR") && parametroFormatado.equals("ANO")) {
+						JOptionPane.showMessageDialog(null,
+								"parametros de nome, autor ou ano inválidos no arquivo de configuração. "
+										+ "Separe os atributos por '/'sem espaços");
 						validado = false;
 						break;
 					}
-					String ascOrDescMaiusculo = ascOrDesc[i].toLowerCase();
-					if(!ascOrDesc[i].equals("ascendente")&&!ascOrDesc[i].equals("descendente")) {
+					
+					String ordemFormatada = ascOrDesc[i].toLowerCase();
+
+					if (!ordemFormatada.equals("ascendente") && !ordemFormatada.equals("descendente")) {
 						JOptionPane.showMessageDialog(null, "parametros de ordenação ascendente ou "
 								+ "descendente inválidos. Certifique-se de ter escrito corretamente e separe os atributos por '/'sem espaços");
 						validado = false;
 						break;
-					}Parametro parametro = new Parametro(Enum.valueOf(Criterio.class, valorMaiusculo), ascOrDescMaiusculo);
-					parametrosDeOrdenacao.add(parametro);
-				}if(validado) {
+					}
+					parametrosDeOrdenacao.add(new Parametro(Enum.valueOf(Criterio.class, parametroFormatado),ordemFormatada));
+				}
+				if (validado) {
 					return parametrosDeOrdenacao;
 				}
-				
+
 				return null;
 			} else {
 				JOptionPane.showMessageDialog(null,
@@ -90,9 +95,10 @@ public class LeitorDeParametro {
 		}
 
 	}
+
 	public void verificaProperties() {
 		File file = new File(System.getProperty("user.dir") + "\\config.properties");
-		if(!file.exists()) {
+		if (!file.exists()) {
 			this.refazerProperties(file);
 		}
 	}

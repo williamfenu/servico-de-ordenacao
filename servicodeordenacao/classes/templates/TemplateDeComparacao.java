@@ -37,7 +37,7 @@ public abstract class TemplateDeComparacao implements Comparator<Livro> {
 
 	private int verificaInversaoDaLista(Livro livro1, Livro livro2) {
 		Parametro parametroAtual = ordenador.getParametrosASeguir().get(this.posicaoAtualDeComparacao);
-		if (parametroAtual.getOrdem() == "descendente") {
+		if (parametroAtual.getOrdem().equals("descendente")) {
 			return resultadoOrdenado(livro1, livro2) * -1;
 		} else
 			return resultadoOrdenado(livro1, livro2);
